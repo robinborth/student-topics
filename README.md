@@ -62,8 +62,6 @@ to regenerate `projects.json` and the site updates automatically.
 
    Reuse tags across topics where it makes sense — shared tags cluster in the
    landing page filter bar.
-4. **Commit and push.** The GitHub Action rebuilds `projects.json` within
-   seconds and the site picks up the new topic on next page load.
 
 ### Teaser image
 
@@ -128,6 +126,26 @@ No heavy shadows.
   to the same family.
 - If the first render is too busy, drop one panel or one sub-element and retry.
 - Aim for **16:9**, roughly 1920×1080 px.
+
+### Local preview
+
+**Verify.** Run the following to check if build.py works and check the visuals locally first.
+
+```
+python build.py              # regenerate projects.json
+python -m http.server 8000   # serve the folder
+# open http://localhost:8000
+```
+
+`build.py` doubles as a validator — it exits non-zero if any project is
+missing a required field or its teaser image. CI runs it before deploy, so a
+broken project blocks the Pages rollout.
+
+
+### Finally
+   
+   **Commit and push.** The GitHub Action rebuilds `projects.json` within
+   seconds and the site picks up the new topic on next page load.
 
 ## 2. Selecting a student
 
@@ -250,17 +268,7 @@ grade is submitted.
 The **slug** is the filename (without `.json`) and must match the teaser
 image `assets/<slug>.jpg`.
 
-### Local preview
 
-```
-python3 build.py              # regenerate projects.json
-python3 -m http.server 8000   # serve the folder
-# open http://localhost:8000
-```
-
-`build.py` doubles as a validator — it exits non-zero if any project is
-missing a required field or its teaser image. CI runs it before deploy, so a
-broken project blocks the Pages rollout.
 
 ### Assets & Git LFS
 
