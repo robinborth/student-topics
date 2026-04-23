@@ -2,7 +2,7 @@
   "title": "Multi-Character 4D Mesh Interactions from a Single Monocular Video",
   "supervisor": {
     "name": "Robin Borth",
-    "href": "https://www.niessnerlab.org/members/robin_borth/profile.html"
+    "href": "https://robinborth.com/"
   },
   "email": "robin.borth@tum.de",
   "teaser": "Current mesh animation pipelines focus on single characters, leaving a gap in generating realistic multi-character interactions with consistent per-character topology. This project introduces a 4D framework that predicts per-character vertex-level deformation fields guided by geometric and motion priors (DepthAnythingV3, optical flow, TrellisV2), while enforcing collision-penalty losses and intersection tests for physically plausible close-contact dynamics.",
