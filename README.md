@@ -39,8 +39,8 @@ Each topic is **one JSON file in `projects/`** plus **one teaser image in
 to regenerate `projects.json` and the site updates automatically.
 
 1. **Copy the template.** From `projects/_template.json`, create a new file
-   named after your topic using lowercase-and-dashes, e.g.
-   `projects/scan-edit.json`. Files starting with `_` are ignored.
+   named after your topic using lowercase_and_underscore, e.g.
+   `projects/scan_edit.json`. Files starting with `_` are ignored.
 2. **Copy the placeholder image** from `assets/_template.jpg` to
    `assets/<slug>.jpg` (same slug as the JSON).
 3. **Fill in the JSON fields.** All fields are required — `build.py` fails if
@@ -80,7 +80,7 @@ committing it** — a bad teaser is worse than no teaser.
 **Fastest workflow — let an LLM fill the template for you:**
 
 1. Copy the **prompt template** below.
-2. Copy your **topic JSON file** (e.g. `projects/my-topic.json`).
+2. Copy your **topic JSON file** (e.g. `projects/my_topic.json`).
 3. Paste both into Claude (or Gemini) and say:
    > *"Fill the placeholders in the prompt template using the method details
    > from this JSON file. Return only the completed prompt — no commentary."*
@@ -199,7 +199,7 @@ The student emails **both you and Angela**, at the respective due dates:
 For the presentation:
 
 - Contact **Jonathan** to schedule the slot.
-- Double-check **Angela's availability** for that slot — she needs to attend,
+- Double-check **Matthias's availability** for that slot — she needs to attend,
   so getting it on her calendar early saves headaches.
 
 Extensions are generally not granted, but if something exceptional comes up
@@ -270,13 +270,7 @@ machine:
 ```
 brew install git-lfs
 git lfs install
-```
-
-GitHub's free LFS tier is 1 GB storage / 1 GB monthly bandwidth. Embed heavy
-videos from YouTube/Vimeo rather than committing them:
-
-```html
-<iframe src="https://www.youtube.com/embed/VIDEO_ID" ... ></iframe>
+git lfs pull
 ```
 
 ### Deployment
