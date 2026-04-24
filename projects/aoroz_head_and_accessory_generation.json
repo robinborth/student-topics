@@ -39,7 +39,8 @@
   ],
   "tags": [
     "Single-Image 3D Reconstruction",
-    "Human Head Avatars"
+    "Human Head Avatars",
+    "Gaussian Splatting"
   ],
   "type": ["Master Thesis", "Guided Research", "IDP"],
   "state": "open"
