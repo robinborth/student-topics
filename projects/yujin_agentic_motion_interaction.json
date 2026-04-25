@@ -1,0 +1,30 @@
+{
+  "title": "A VLM-Guided Agent for Physics-Aware Motion Adaptation in Human-Object Interactions",
+  "supervisor": {
+    "name": "Yujin Chen",
+    "href": "https://terencecyj.github.io/"
+  },
+  "email": "terencecyj@gmail.com",
+  "teaser": "This project develops an autonomous agent that adapts existing human-object mocap sequences into physically consistent animations guided by natural language. An LLM maps prompts such as “make the box feel heavy” to physical parameters like mass, center of mass, and friction. A physics-aware IK solver modifies the motion, while a VLM critic evaluates whether the result looks realistic and semantically correct. The goal is to enable language-driven, physically plausible animation for VR/AR, games, and robotics data generation.",
+  "abstract": "The primary goal of this research is to develop an autonomous agent capable of transforming existing Mocap sequences (such as the HUMOTO data) into physically-consistent animations based on natural language. The system utilizes a Large Language Model (LLM) for physical reasoning and a Vision-Language Model (VLM) as an automated critic to validate both semantic mapping (e.g., \"does this look like a 20kg box?\") and the realism of the resulting motion adaptation. Potential applications include enhancing immersion in VR/AR through weight-driven visual cues, automating high-fidelity character animation for gaming, and generating physically-diverse synthetic data for robust robot manipulation training.",
+  "milestones": [
+    "Dataset and Prompt Setup: Prepare human-object mocap sequences and define representative language prompts with different physical properties.",
+    "LLM-Based Physical Reasoning: Implement a module that converts natural language descriptions into structured physical parameters such as mass, center of mass, and friction.",
+    "Physics-Aware Motion Adaptation: Build a lightweight solver that modifies human-object trajectories to reflect balance, effort, and physical constraints.",
+    "VLM Critic and Iterative Refinement: Use a VLM to evaluate semantic alignment and physical plausibility, then refine the adapted motion based on its feedback."
+  ],
+  "prerequisites": [
+    { "label": "Introduction to Deep Learning (I2DL)", "href": "https://niessner.github.io/I2DL/" },
+    { "label": "Advanced Deep Learning for Computer Vision: Visual Computing (ADL4CV)", "href": "https://niessner.github.io/ADL4CV/" },
+    { "label": "3D Scanning & Motion Capture (3DSMC)", "href": "https://niessner.github.io/3DScanning/" }
+  ],
+  "references": [
+    { "label": "HUMOTO: A 4D Dataset of Mocap Human Object Interactions", "href": "https://jiaxin-lu.github.io/humoto/" },
+    { "label": "InterMimic: Towards Universal Whole-Body Control for Physics-Based Human-Object Interactions", "href": "https://sirui-xu.github.io/InterMimic/" },
+    { "label": "FORCE: Dataset and Method for Intuitive Physics Guided Human-Object Interaction", "href": "https://virtualhumans.mpi-inf.mpg.de/force/" },
+    { "label": "VIPER: Visual Perception and Explainable Reasoning for Sequential Decision-Making", "href": "https://arxiv.org/pdf/2503.15108" }
+  ],
+  "tags": ["4D Animation", "Agentic AI", "Physics-Aware Motion Adaptation"],
+  "type": ["Master Thesis", "Guided Research"],
+  "state": "open"
+}
