@@ -1,0 +1,33 @@
+{
+  "title": "Occlusion-Aware Feed-Forward Reconstruction",
+  "supervisor": {
+    "name": "Umut Kocasari",
+    "href": "https://kocasariumut.github.io/"
+  },
+  "email": "umut.kocasar@tum.de",
+  "teaser": "This project extends feed-forward 3D reconstruction beyond visible surfaces by jointly predicting depth, ray maps, and per-pixel occlusion probabilities, together with the geometry of the regions hidden behind the seen pixels. Building on Depth Anything 3, the framework reconstructs both visible and occluded scene parts in a single forward pass, enabling more complete and amodal 3D scene understanding from images.",
+  "abstract": "This project develops an occlusion-aware feed-forward reconstruction framework that recovers not only the visible geometry of a scene but also the structure hidden behind it. Current state-of-the-art feed-forward models such as Depth Anything 3 (DA3) produce dense depth and ray maps for visible surfaces, but they remain fundamentally limited to first-hit geometry: when parts of the scene are occluded, the network does not predict what lies behind them. This restricts downstream applications such as robotics, AR/VR, and novel-view synthesis, where amodal scene completion and reasoning about hidden surfaces are essential. The proposed approach extends DA3 with two additional prediction heads: an occlusion probability head that estimates, per pixel, the likelihood that the visible surface hides additional geometry behind it, and a back-depth head that predicts the depth of the occluded region whenever the occlusion head fires. Together with the standard depth and ray map outputs, this enables joint reconstruction of seen and unseen areas in a single feed-forward pass. The framework will be trained on multi-view and synthetic datasets where back-surface ground truth is available through depth peeling or volumetric rendering, and evaluated on standard reconstruction benchmarks as well as occlusion-heavy scenes. The resulting system aims to deliver more complete, amodal 3D reconstructions while preserving the efficiency and generalization of feed-forward inference.",
+  "milestones": [
+    "Set up the environment and run the DA3 baseline on standard reconstruction benchmarks, analyzing failure modes in occluded regions",
+    "Construct a training dataset with back-surface supervision using multi-view datasets (e.g. ScanNet++, Hypersim) and depth peeling on synthetic scenes",
+    "Extend the DA3 architecture with an occlusion probability head that predicts per-pixel likelihood of hidden geometry behind the visible surface",
+    "Add a back-depth prediction head that estimates the depth of the occluded region, gated by the occlusion probability",
+    "Train the joint model end-to-end with combined losses on visible depth, occlusion probability, and back-depth, while keeping or partially fine-tuning the DA3 backbone",
+    "Evaluate joint seen-and-occluded reconstruction quality on benchmarks, comparing against DA3 and amodal completion baselines, and visualize amodal point clouds",
+    "Bonus: Extend the formulation to multiple occlusion layers (depth peeling-style) for richer amodal reconstruction"
+  ],
+  "prerequisites": [
+    { "label": "Introduction to Deep Learning (I2DL)", "href": "https://niessner.github.io/I2DL/" },
+    { "label": "Advanced Deep Learning for Computer Vision: Visual Computing (ADL4CV)", "href": "https://niessner.github.io/ADL4CV/" },
+    { "label": "3D Scanning & Motion Capture (3DSMC)", "href": "https://niessner.github.io/3DScanning/" }
+  ],
+  "references": [
+    { "label": "Depth Anything 3: Recovering the Visual Space from Any Views", "href": "https://depth-anything-3.github.io/" },
+    { "label": "VGGT: Visual Geometry Grounded Transformer", "href": "https://arxiv.org/abs/2503.11651" },
+    { "label": "ScanNet++: A High-Fidelity Dataset of 3D Indoor Scenes", "href": "https://kaldir.vc.in.tum.de/scannetpp/" },
+    { "label": "Hypersim: A Photorealistic Synthetic Dataset for Holistic Indoor Scene Understanding", "href": "https://github.com/apple/ml-hypersim" }
+  ],
+  "tags": ["Feed-Forward Reconstruction", "Occlusion Handling", "Amodal Geometry", "Depth Anything 3"],
+  "type": ["IDP", "Master Thesis", "Guided Research"],
+  "state": "open"
+}

@@ -1,0 +1,33 @@
+{
+  "title": "Higher-Frequency Geometry Recovery for Feed-Forward Reconstruction",
+  "supervisor": {
+    "name": "Umut Kocasari",
+    "href": "https://kocasariumut.github.io/"
+  },
+  "email": "umut.kocasar@tum.de",
+  "teaser": "This project tackles the over-smoothing problem of feed-forward 3D reconstructors by introducing a residual prediction module on top of Depth Anything 3. While DA3 already produces strong but blurry geometry, an additional lightweight head learns to predict high-frequency residuals that recover fine surface details such as edges, creases, and texture-induced geometry, delivering sharper reconstructions without retraining the underlying backbone.",
+  "abstract": "This project addresses a well-known limitation of feed-forward 3D reconstruction models: while methods such as Depth Anything 3 (DA3) produce globally consistent and robust geometry from a single forward pass, their predictions are typically over-smoothed and lack the high-frequency surface details that define realistic 3D scenes. Sharp edges, fine creases, small structural elements, and texture-aligned geometry are systematically attenuated, which limits applications such as photorealistic rendering, asset capture, and AR/VR where surface fidelity is critical. The proposed approach keeps the DA3 backbone frozen and develops an additional residual head that predicts a high-frequency correction term on top of DA3's depth and ray map outputs. By framing the problem as residual learning, the module can focus its capacity entirely on recovering the missing high-frequency components rather than re-estimating the full geometry, leading to a lightweight and stable training setup. The residual head will be trained with high-frequency-aware losses (e.g. gradient losses, frequency-domain losses, and edge-aware supervision) on datasets with high-fidelity ground-truth geometry such as ScanNet++ and Hypersim. The resulting framework aims to deliver sharper, more detailed reconstructions while preserving the efficiency, generalization, and global consistency of feed-forward inference.",
+  "milestones": [
+    "Set up the environment, run the DA3 baseline on standard reconstruction benchmarks, and quantify the high-frequency error compared to ground-truth geometry (e.g. via gradient and frequency-domain metrics)",
+    "Set up data pipelines for high-fidelity geometry datasets such as ScanNet++ and Hypersim, and compute target residuals as the difference between ground-truth and DA3-predicted depth",
+    "Design a lightweight residual prediction head that operates on top of the frozen DA3 backbone, taking DA3 latent features and the predicted depth/ray maps as input",
+    "Train the residual head with frequency-aware losses (gradient loss, edge-aware loss, optional FFT-based loss) while keeping DA3 fully frozen",
+    "Evaluate the corrected reconstructions on standard benchmarks, with emphasis on edge sharpness, fine-detail recovery, and frequency-domain metrics, comparing against vanilla DA3",
+    "Ablate the role of feature inputs, loss design, and module capacity to identify which components matter most for high-frequency recovery",
+    "Bonus: Investigate whether image-conditioned guidance (e.g. RGB high-frequency cues) further improves residual prediction, or extend the module to also refine ray maps for better surface normals"
+  ],
+  "prerequisites": [
+    { "label": "Introduction to Deep Learning (I2DL)", "href": "https://niessner.github.io/I2DL/" },
+    { "label": "Advanced Deep Learning for Computer Vision: Visual Computing (ADL4CV)", "href": "https://niessner.github.io/ADL4CV/" },
+    { "label": "3D Scanning & Motion Capture (3DSMC)", "href": "https://niessner.github.io/3DScanning/" }
+  ],
+  "references": [
+    { "label": "Depth Anything 3: Recovering the Visual Space from Any Views", "href": "https://depth-anything-3.github.io/" },
+    { "label": "VGGT: Visual Geometry Grounded Transformer", "href": "https://arxiv.org/abs/2503.11651" },
+    { "label": "ScanNet++: A High-Fidelity Dataset of 3D Indoor Scenes", "href": "https://kaldir.vc.in.tum.de/scannetpp/" },
+    { "label": "Hypersim: A Photorealistic Synthetic Dataset for Holistic Indoor Scene Understanding", "href": "https://github.com/apple/ml-hypersim" }
+  ],
+  "tags": ["Feed-Forward Reconstruction", "Residual Learning", "High-Frequency Details", "Depth Anything 3"],
+  "type": ["IDP", "Master Thesis", "Guided Research"],
+  "state": "open"
+}

@@ -1,0 +1,33 @@
+{
+  "title": "OccluFace: Face Tracking under Extreme Occlusion",
+  "supervisor": {
+    "name": "Umut Kocasari",
+    "href": "https://kocasariumut.github.io/"
+  },
+  "email": "umut.kocasar@tum.de",
+  "teaser": "This project develops an end-to-end face tracking framework that operates on monocular video under extreme occlusion, jointly predicting face reconstruction and visibility. By combining synthetic occlusion training, in-the-wild supervision from VFHQ, and a dedicated benchmark on heavily occluded clips, it enables robust FLAME/NPHM tracking even when large portions of the face are hidden by hands, objects, or other obstructions.",
+  "abstract": "This project aims to develop a robust monocular face tracking framework that produces accurate FLAME/NPHM reconstructions under extreme occlusion. Reliable face tracking is critical for applications such as avatar creation, telepresence, and performance capture, where users frequently interact with objects, gesture near their faces, or are partially occluded by accessories. However, existing trackers degrade severely when significant portions of the face are hidden, often hallucinating geometry or losing temporal stability. To address this, the proposed approach jointly learns face reconstruction and visibility prediction in an end-to-end manner, optionally inpainting occluded regions to recover plausible facial geometry. The model will be trained with a synthetic occluded dataset, and additionally on the VFHQ dataset, where supervision is derived from tracking results on the original unoccluded videos and transferred to synthetically occluded versions, enabling the network to learn robust predictions under occlusion from in-the-wild data. A new benchmark will be constructed by overlaying random objects on NeRSemble dataset videos to systematically measure tracking performance under heavy occlusion. The resulting system seeks to deliver consistent, high-fidelity face tracking even in challenging real-world scenarios where current methods fail.",
+  "milestones": [
+    "Set up the environment and run baseline FLAME/NPHM trackers on the NeRSemble dataset",
+    "Generate a synthetic occluded training dataset by overlaying random objects on face videos",
+    "Run baseline trackers on unoccluded VFHQ videos to obtain pseudo-ground-truth FLAME/NPHM supervision",
+    "Implement the data loader and training pipeline for the joint reconstruction and visibility model, combining synthetic occlusions with VFHQ pseudo-labels",
+    "Extend the architecture with a visibility prediction head and train end-to-end using both synthetic and VFHQ-supervised data",
+    "Construct the benchmark on NeRSemble with controlled occlusion patterns and evaluate tracking performance",
+    "Bonus: Add an inpainting module that predicts plausible facial geometry for occluded regions"
+  ],
+  "prerequisites": [
+    { "label": "Introduction to Deep Learning (I2DL)", "href": "https://niessner.github.io/I2DL/" },
+    { "label": "Advanced Deep Learning for Computer Vision: Visual Computing (ADL4CV)", "href": "https://niessner.github.io/ADL4CV/" },
+    { "label": "3D Scanning & Motion Capture (3DSMC)", "href": "https://niessner.github.io/3DScanning/" }
+  ],
+  "references": [
+    { "label": "FLAME: Learning a model of facial shape and expression from 4D scans", "href": "https://flame.is.tue.mpg.de/" },
+    { "label": "NPHM: Neural Parametric Head Models", "href": "https://simongiebenhain.github.io/NPHM/" },
+    { "label": "NeRSemble: Multi-view Radiance Field Reconstruction of Human Heads", "href": "https://tobias-kirschstein.github.io/nersemble/" },
+    { "label": "VFHQ: A High-Quality Dataset and Benchmark for Video Face Super-Resolution", "href": "https://liangbinxie.github.io/projects/vfhq/" }
+  ],
+  "tags": ["Face Tracking", "Occlusion Handling", "FLAME/NPHM Reconstruction"],
+  "type": ["IDP", "Master Thesis", "Guided Research"],
+  "state": "open"
+}

@@ -1,0 +1,33 @@
+{
+  "title": "DA3-Track: Geometry-Prior-Guided Point Tracking with Depth Anything 3",
+  "supervisor": {
+    "name": "Umut Kocasari",
+    "href": "https://kocasariumut.github.io/"
+  },
+  "email": "umut.kocasar@tum.de",
+  "teaser": "This project investigates whether the geometric priors learned by Depth Anything 3 already encode implicit temporal correspondences, and builds on this insight to design a lightweight query-based 3D point tracker. Given a source frame, a target frame, and a chosen camera coordinate system, the model predicts the 3D trajectory of any queried pixel across time, enabling efficient and generalizable point tracking with minimal additional training.",
+  "abstract": "This project explores whether the geometric priors of Depth Anything 3 (DA3) can be leveraged to enable efficient and generalizable tracking of arbitrary query pixels across video. While DA3 provides dense depth and ray maps that establish strong per-frame 3D structure, it lacks an explicit notion of temporal correspondence, which is essential for tasks such as dynamic scene reconstruction, motion analysis, and 4D understanding. The central hypothesis is that DA3's internal attention layers already encode implicit tracking signals, since attending across views and frames is necessary to produce geometrically consistent depth predictions. Building on this analysis, the project aims to design a lightweight, query-based tracking framework that, given a source timestep (t_src), a target timestep (t_tgt), and a camera coordinate frame (t_cam), predicts the 3D position of any queried pixel at the target time. The framework will combine DA3's frozen geometric priors with optional local patch embeddings and a small trainable correspondence head, supervised on existing trajectory datasets such as PointOdyssey. By avoiding heavy retraining and operating directly on DA3's geometry, the resulting model targets strong generalization, temporal consistency, and efficiency, supporting downstream applications in robotics, AR, and 4D reconstruction.",
+  "milestones": [
+    "Set up the environment, run DA3 inference on standard video benchmarks, and visualize depth and ray maps",
+    "Probe DA3's internal attention maps to evaluate whether tokens corresponding to the same physical 3D point exhibit consistent attention across frames",
+    "Set up data pipelines for PointOdyssey (and optionally Kubric / TAP-Vid-3D) to obtain ground-truth pixel trajectories and 3D correspondences",
+    "Design a lightweight query-based tracking head that takes (t_src, t_tgt, t_cam) and a query pixel, and predicts its 3D position at t_tgt using DA3 latent features and optional local patch embeddings",
+    "Train the tracking head with frozen DA3 backbone, using trajectory and 3D consistency losses, and explore minimal fine-tuning of late DA3 layers",
+    "Evaluate tracking accuracy, temporal consistency, and robustness across varying time gaps and camera coordinate choices, comparing against baselines such as D4RT and V-DPM",
+    "Bonus: Extend the framework to dense all-pixel tracking and demonstrate 4D reconstruction on dynamic scenes"
+  ],
+  "prerequisites": [
+    { "label": "Introduction to Deep Learning (I2DL)", "href": "https://niessner.github.io/I2DL/" },
+    { "label": "Advanced Deep Learning for Computer Vision: Visual Computing (ADL4CV)", "href": "https://niessner.github.io/ADL4CV/" },
+    { "label": "3D Scanning & Motion Capture (3DSMC)", "href": "https://niessner.github.io/3DScanning/" }
+  ],
+  "references": [
+    { "label": "Depth Anything 3: Recovering the Visual Space from Any Views", "href": "https://depth-anything-3.github.io/" },
+    { "label": "D4RT: Dense 4D Reconstruction and Tracking", "href": "https://d4rt-paper.github.io/" },
+    { "label": "V-DPM: Video Dense Prediction Model", "href": "https://www.robots.ox.ac.uk/~vgg/research/vdpm/" },
+    { "label": "PointOdyssey: A Large-Scale Synthetic Dataset for Long-Term Point Tracking", "href": "https://pointodyssey.com/" }
+  ],
+  "tags": ["Point Tracking", "Geometry Priors", "Depth Anything 3", "4D Reconstruction"],
+  "type": ["IDP", "Master Thesis", "Guided Research"],
+  "state": "open"
+}
