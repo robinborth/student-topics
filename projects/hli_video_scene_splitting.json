@@ -1,0 +1,26 @@
+{
+  "title": "Video-Model-based Single-View Scene Splitting and Reconstruction",
+  "supervisor": {
+    "name": "Haoxuan Li",
+    "href": "https://niessnerlab.org/members/haoxuan_li/profile.html"
+  },
+  "email": "haoxuan.li@tum.de",
+  "teaser": "Use a video generation model to isolate individual objects in a single-view scene, complete their hidden geometry, then re-assemble them into a full reconstructed 3D scene.",
+  "abstract": "Video generation models are powerful for their temporal consistency, and with the right prompting or fine-tuning their spatial consistency can be exploited as well. This project targets a pipeline that, given a single image of a scene, prompts a video model to generate a clip in which one object is isolated and revealed from multiple viewpoints, exposing previously occluded geometry. The isolated views are fed to a 3D generation method (e.g., TRELLIS.2) to reconstruct the object, and a placement method positions each reconstructed object back into a coherent global scene. The student will manage the accumulated error across the prompting, reconstruction, and placement stages — the dominant engineering challenge.",
+  "milestones": [
+    "Successfully prompt or fine-tune a video model (e.g., Wan) to isolate single objects from a scene image and produce multi-view-consistent clips.",
+    "Plug the resulting clips into a 3D reconstruction method (TRELLIS.2 or similar) to recover per-object geometry.",
+    "Develop a placement method that returns the reconstructed objects to their correct spatial locations in the original scene."
+  ],
+  "prerequisites": [
+    { "label": "Introduction to Deep Learning (I2DL)", "href": "https://niessner.github.io/I2DL/" }
+  ],
+  "references": [
+    { "label": "Wan video model", "href": "https://wan.video/" },
+    { "label": "TRELLIS.2 — Native and Compact Structured Latents for 3D Generation", "href": "https://microsoft.github.io/TRELLIS.2/" },
+    { "label": "Scene Diffusion (Manuel Dahnert)", "href": "https://www.manuel-dahnert.com/research/scene-diffusion" }
+  ],
+  "tags": ["Video Models", "Single-View 3D", "Scene Reconstruction"],
+  "type": ["Master Thesis", "Guided Research", "IDP"],
+  "state": "open"
+}
