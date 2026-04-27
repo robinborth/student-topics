@@ -1,0 +1,55 @@
+{
+  "title": "SAM-3D-Based 3D Scene Reconstruction from Multiple Images",
+  "supervisor": {
+    "name": "Antonio Oroz",
+    "href": "https://niessnerlab.org/members/antonio_oroz/profile.html"
+  },
+  "email": "antonio.oroz@tum.de",
+  "teaser": "Develop a modular multi-image 3D scene reconstruction pipeline that combines Depth Anything 3 point-cloud initialization with SAM-3D-based object reconstruction, object alignment, and generated structural scene geometry.",
+  "abstract": "Multi-view 3D scene reconstruction from casual image collections remains challenging when scenes contain cluttered objects, occlusions, and incomplete viewpoints. This project investigates an object- and structure-aware reconstruction pipeline built around recent foundation models for geometry estimation and object-level 3D reconstruction. Given multiple posed or unposed input images of a scene, the pipeline first applies Depth Anything 3 to estimate spatially consistent depth and generate an initial global point cloud. Object instances are then detected, segmented, and reconstructed separately using SAM-3D, producing object-level geometry, texture, and approximate layout. Since SAM-3D reconstructions are generated independently, we need to estimate consistent object scale, pose, and alignment across views and integrate the reconstructed objects into the global scene. In parallel, missing structural geometry such as walls, floors, ceilings, and large planar surfaces need to be inferred from the point cloud and generated or refined into a coherent scene. The final system combines depth-based scene geometry, SAM-3D object assets, and generated structural components into a complete 3D scene representation.",
+  "milestones": [
+    "Set up a multi-image scene reconstruction pipeline using Depth Anything 3 to estimate depth maps, camera geometry, and an initial fused point cloud.",
+    "Integrate object detection and segmentation to extract object instances from the input images and prepare per-object crops or masks for SAM-3D reconstruction.",
+    "Use SAM-3D to reconstruct object-level 3D geometry, texture, and approximate layout for visible objects in the scene.",
+    "Design and implement an object alignment module that refines SAM-3D's estimated scale and pose for consistency with DA3's point cloud.",
+    "Develop a structural geometry generation module for walls, floors, ceilings, large planar surfaces, and missing background geometry.",
+  ],
+  "prerequisites": [
+    {
+      "label": "Introduction to Deep Learning (I2DL)",
+      "href": "https://niessner.github.io/I2DL/"
+    },
+    {
+      "label": "Advanced Deep Learning for Computer Vision: Visual Computing (ADL4CV)",
+      "href": "https://niessner.github.io/ADL4CV/"
+    },
+    {
+      "label": "3D Scanning & Motion Capture (3DSMC)",
+      "href": "https://niessner.github.io/3DScanning/"
+    }
+  ],
+  "references": [
+    {
+      "label": "SAM 3D: 3Dfy Anything in Images",
+      "href": "https://arxiv.org/pdf/2511.16624"
+    },
+    {
+      "label": "Depth Anything 3: Recovering the Visual Space from Any Views",
+      "href": "https://arxiv.org/pdf/2511.10647"
+    }
+  ],
+  "tags": [
+    "Multi-View 3D Reconstruction",
+    "3D Scene Reconstruction",
+    "SAM-3D",
+    "Depth Estimation",
+    "Object-Level Reconstruction",
+    "Structural Scene Completion"
+  ],
+  "type": [
+    "Master Thesis",
+    "Guided Research",
+    "IDP"
+  ],
+  "state": "open"
+}
