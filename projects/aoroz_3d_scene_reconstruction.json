@@ -12,7 +12,7 @@
     "Integrate object detection and segmentation to extract object instances from the input images and prepare per-object crops or masks for SAM-3D reconstruction.",
     "Use SAM-3D to reconstruct object-level 3D geometry, texture, and approximate layout for visible objects in the scene.",
     "Design and implement an object alignment module that refines SAM-3D's estimated scale and pose for consistency with DA3's point cloud.",
-    "Develop a structural geometry generation module for walls, floors, ceilings, large planar surfaces, and missing background geometry.",
+    "Develop a structural geometry generation module for walls, floors, ceilings, large planar surfaces, and missing background geometry."
   ],
   "prerequisites": [
     {
