@@ -1,0 +1,25 @@
+{
+  "title": "VLM-Prompted Interactive Video: Bridging Action Fidelity Gaps",
+  "supervisor": {
+    "name": "Haoxuan Li",
+    "href": "https://niessnerlab.org/members/haoxuan_li/profile.html"
+  },
+  "email": "haoxuan.li@tum.de",
+  "teaser": "Inject VLM-generated prompts into interactive video models on every frame batch to recover plausible character-environment interactions that the underlying video prior already knows but the interactive variant has lost.",
+  "abstract": "Interactive video models lack plausible character-environment interactions because the vast majority of their training data comes from Unreal-Engine sources with insufficiently defined character-environment dynamics (characters do not get damaged, do not die, do not perform complex interactions). Working from the hypothesis that the underlying video backbone has internalized a strong prior over realistic interactions, this project re-injects that prior at inference time by prompting the model with VLM-generated guidance whenever a new frame batch is generated. The pipeline trades real-time capability for fidelity, producing offline videos of higher quality and — as a downstream use — pseudo-ground-truth that can be used to fine-tune the interactive variant itself. The student will design the VLM prompting loop, study where in the generation stack the prompts have the most leverage, and quantify the fidelity gain.",
+  "milestones": [
+    "Reproduce a working interactive video model and successfully prompt it to generate the desired videos.",
+    "Prompt or fine-tune a VLM that produces high-quality control prompts for the video generation step.",
+    "(Optional) Fine-tune the interactive video model using the generated higher-fidelity videos as pseudo-ground-truth."
+  ],
+  "prerequisites": [
+    { "label": "Introduction to Deep Learning (I2DL)", "href": "https://niessner.github.io/I2DL/" }
+  ],
+  "references": [
+    { "label": "Genie (DeepMind)", "href": "https://deepmind.google/models/genie/" },
+    { "label": "Lingbot World", "href": "https://lingbot-world.org/" }
+  ],
+  "tags": ["VLM", "Video Generation", "Interactive Video"],
+  "type": ["Master Thesis", "Guided Research", "IDP"],
+  "state": "open"
+}
