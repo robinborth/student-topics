@@ -1,0 +1,34 @@
+{
+  "title": "Generating 3D Scenes from Human Motion via Frontier Image Models",
+  "supervisor": {
+    "name": "Marc Benedi",
+    "href": "https://marcb.pro"
+  },
+  "email": "[marc.benedi@tum.de](mailto:marc.benedi@tum.de)",
+  "teaser": "Given only a 3D human motion sequence, generate the 3D Gaussian Splat scene around it — using the SMPL body itself as a visual anchor for a frontier image model and lifting the result to 3D.",
+  "abstract": "Human motion implicitly encodes the 3D scene it takes place in: where someone sits implies a chair, how they reach implies a graspable surface, how they walk implies free floor space. This project builds a pipeline that takes only a 3D human motion sequence (SMPL parameters) and generates a 3D Gaussian Splat scene that the motion plausibly took place in.\n\nThe pipeline has two stages. First, the motion is described in two ways: a frozen motion captioner (e.g., MotionGPT-3) generates an action-level description (\"a person sits down\"), and a vision-language model (e.g., Qwen2-VL) applied to the rendered skeleton infers likely objects in the scene (\"a chair, possibly a small table\"). Second, a representative frame of the SMPL body is rendered and fed to a frontier image model (e.g., Flux Kontext), which generates the surrounding scene around it. The single 2D image is then made multi-view consistent (e.g., with Zero123++) and lifted to a 3D Gaussian Splat representation (e.g., with LGM). Finally, the full motion is animated inside the reconstructed scene to produce an orbiting-camera demo video.\n\nThe key idea is using the rendered SMPL body itself as a visual anchor for scene generation — a seated body forces a chair under the pelvis without needing explicit collision or contact losses. The method is evaluated against motion-to-scene baselines (SUMMON, MIME, Pose2Room, SHADE, DiffuScene) on the TRUMANS benchmark.",
+  "milestones": [
+    "Set up the environment with a frontier image model (e.g., Flux Kontext) on the 3090, and reproduce one motion-to-scene baseline (e.g., Pose2Room or DiffuScene).",
+    "Build a motion preprocessing module that extracts contact points and free-space regions from the SMPL motion — these encode where furniture can and cannot go.",
+    "Generate two text descriptions per motion: an action-level caption from a frozen motion captioner (e.g., MotionGPT-3), and an object-level scene description from a frozen vision-language model (e.g., Qwen2-VL) applied to the rendered skeleton.",
+    "Render the SMPL body at a representative frame and use the image model to generate a single 2D scene around it, conditioned on the two text descriptions.",
+    "Lift the single image into a 3D Gaussian Splat scene by generating consistent multi-view images (e.g., with Zero123++) and reconstructing 3D from them (e.g., with LGM).",
+    "Evaluate scene quality against motion-to-scene baselines on TRUMANS and run a user study comparing orbiting-camera demo videos."
+  ],
+  "prerequisites": [
+    { "label": "Introduction to Deep Learning (I2DL)", "href": "https://niessner.github.io/I2DL/" },
+    { "label": "3D Scanning & Motion Capture (3DSMC)", "href": "https://niessner.github.io/3DScanning/" },
+    { "label": "Advanced Deep Learning for Computer Vision: Visual Computing (ADL4CV)", "href": "https://niessner.github.io/ADL4CV/" }
+  ],
+  "references": [
+    { "label": "MIME — Human-Aware 3D Scene Generation (CVPR 2023)", "href": "https://openaccess.thecvf.com/content/CVPR2023/papers/Yi_MIME_Human-Aware_3D_Scene_Generation_CVPR_2023_paper.pdf" },
+    { "label": "Pose2Room (ECCV 2022)", "href": "https://arxiv.org/abs/2112.03030" },
+    { "label": "Physics-based Scene Layout Generation from Human Motion (SIGGRAPH 2024)", "href": "https://arxiv.org/abs/2405.12460" },
+    { "label": "DiffuScene — Denoising Diffusion Models for Generative Indoor Scene Synthesis (CVPR 2024)", "href": "https://arxiv.org/abs/2303.14207" },
+    { "label": "TRUMANS dataset — Scaling Up Dynamic Human-Scene Interaction Modeling (CVPR 2024)", "href": "https://arxiv.org/abs/2403.08629" },
+    { "label": "DreamScene — 3D Gaussian-based Text-to-3D Scene Generation (ECCV 2024)", "href": "https://arxiv.org/abs/2404.03575" }
+  ],
+  "tags": ["Human Motion", "3D Scene Generation", "Diffusion Models", "Gaussian Splatting", "Vision-Language Models", "SMPL"],
+  "type": ["Master Thesis", "Guided Research", "IDP"],
+  "state": "open"
+}

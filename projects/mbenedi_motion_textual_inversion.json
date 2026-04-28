@@ -1,0 +1,32 @@
+{
+  "title": "Textual Inversion of Motion Diffusion Models as an Editing Primitive",
+  "supervisor": {
+    "name": "Marc Benedi",
+    "href": "https://marcb.pro"
+  },
+  "email": "[marc.benedi@tum.de](mailto:marc.benedi@tum.de)",
+  "teaser": "Given a 3D human motion sequence, recover an editable text-space embedding inside a frozen motion diffusion model — then swap per-body-part tokens between motions to produce compositional, body-part-level edits.",
+  "abstract": "Modern text-to-motion diffusion models learn a rich distribution over human motion conditioned on language. This project asks: can we invert that relationship? Given a single motion sequence and a frozen text-to-motion diffusion model (MDM), optimize a text-space embedding that best explains the motion in the model's own learned prior — then use that embedding as a body-part-level editing primitive.\n\nThe approach exploits SMPL's body-part structure by parameterising the inverted embedding as a grid of per-kinematic-chain × per-temporal-segment tokens, with a CLIP-vocabulary-anchor regularizer to fight memorization. Once inverted, individual chain tokens (e.g., the left-arm group) can be swapped between motions to produce compositional body-part-level edits while keeping the rest of the body fixed.\n\nThis is the first study of textual inversion in the SMPL motion domain. Pixel-space inversion (Reenact Anything, SIGGRAPH 2025) and trained motion captioners (MotionGPT-3) cannot offer this kind of editable, kinematic-chain-aware embedding handle.",
+  "milestones": [
+    "Set up the environment, reproduce MDM on HumanML3D, and verify DDIM noise inversion reconstructs motion to within MPJPE < 30 mm.",
+    "Implement SMPL-aware textual inversion that optimises a grid of per-kinematic-chain × per-temporal-segment tokens against the frozen MDM with a CLIP-vocabulary-anchor regularizer.",
+    "Run the chain-disentanglement probe to quantify spillover between body-part token groups and tune the token-grid dimensions.",
+    "Build the body-part editing demo by swapping per-chain inverted tokens between two motions and producing 8–12 demo videos.",
+    "Evaluate reconstruction quality (MPJPE, FID, R-Precision) and editing quality (per-chain spillover MPJPE) against MotionCLR attention editing and SimMotionEdit baselines."
+  ],
+  "prerequisites": [
+    { "label": "Introduction to Deep Learning (I2DL)", "href": "https://niessner.github.io/I2DL/" },
+    { "label": "3D Scanning & Motion Capture (3DSMC)", "href": "https://niessner.github.io/3DScanning/" },
+    { "label": "Advanced Deep Learning for Computer Vision: Visual Computing (ADL4CV)", "href": "https://niessner.github.io/ADL4CV/" }
+  ],
+  "references": [
+    { "label": "An Image is Worth One Word — Textual Inversion (Gal et al., ICLR 2023)", "href": "https://arxiv.org/abs/2208.01618" },
+    { "label": "Reenact Anything — Motion-Conditioned Video Generation via Motion-Textual Inversion (SIGGRAPH 2025)", "href": "https://arxiv.org/abs/2408.00458" },
+    { "label": "MDM — Human Motion Diffusion Model (Tevet et al.)", "href": "https://arxiv.org/abs/2209.14916" },
+    { "label": "Null-text Inversion for Editing Real Images (Mokady et al., CVPR 2023)", "href": "https://arxiv.org/abs/2211.09794" },
+    { "label": "HumanML3D — Generating Diverse and Natural 3D Human Motions from Text (CVPR 2022)", "href": "https://openaccess.thecvf.com/content/CVPR2022/papers/Guo_Generating_Diverse_and_Natural_3D_Human_Motions_From_Text_CVPR_2022_paper.pdf" }
+  ],
+  "tags": ["Human Motion", "Diffusion Models", "Textual Inversion", "Motion Editing", "SMPL"],
+  "type": ["Master Thesis", "Guided Research", "IDP"],
+  "state": "open"
+}
