@@ -1,8 +1,8 @@
 {
   "title": "Matryoshka: Recursive and Coherent Generation of Plausible City-Scale 3D Environments",
   "supervisor": {
-    "name": "Open",
-    "href": "https://niessnerlab.org/team.html"
+    "name": "Simon Giebenhain",
+    "href": "https://simongiebenhain.github.io"
   },
   "email": "simon.gibenehain@tum.de",
   "teaser": "Generate plausible city-scale 3D environments through a recursive pipeline that decomposes the world from city layout down to individual room interiors. The focus is structural plausibility, not photorealism.",

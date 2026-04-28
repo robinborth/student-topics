@@ -1,0 +1,36 @@
+{
+  "title": "HeadPlay: An Auto-Regressive World Model for Playable Human Head Avatars",
+  "supervisor": {
+    "name": "Simon Giebenhain",
+    "href": "https://simongiebenhain.github.io"
+  },
+  "email": "simon.giebehain@tum.de",
+  "teaser": "Build a small-scale Genie/WHAM-style world model for a human head: a transformer that takes camera motion and facial expression as actions and hallucinates the next frame, token by token, on a single 10 GB GPU.",
+  "abstract": "Recent foundation world models such as Genie 3 [Genie 3] and Microsoft's WHAM/Muse [WHAM, WHAMM] turn a video game into a playable neural simulation by training a transformer on interleaved sequences of image and action tokens. This project transplants the same recipe into the most expressive constrained domain we have access to in the lab: a single (or few) human head(s). The student first builds a synthetic dataset of paired (camera trajectory, expression sequence, frame) tuples by driving a pre-trained Gaussian Head Avatar [GaussianHeadAvatar, GaussianAvatars] on top of the NeRSemble multi-view capture dataset [NeRSemble]. A discrete frame tokenizer (FSQ [FSQ]) is trained to encode head frames into a compact codebook that is by construction immune to collapse. A small autoregressive transformer is then trained to predict the next image/action token, with MaskGIT-style [MaskGIT] parallel decoding for interactive frame rates at inference. The headline research question is identity drift over long rollouts: the student investigates a spatial latent memory [SpatialMemory] that conditions on identity-bearing FLAME shape parameters and/or on a small bank of episodic frames, so that the head stays the same head a hundred frames in. Resolution is intentionally kept low (64\u00b2\u2013128\u00b2); the goal is not photorealism but a clean, end-to-end study of the world-model recipe inside a tightly constrained data distribution, on consumer hardware.",
+  "milestones": [
+    "Build the synthetic data pipeline: render camera trajectories paired with FLAME expression sequences through a pre-trained Gaussian Head Avatar; produce labelled (frame, camera, expression) tuples.",
+    "Prototype end-to-end: train an FSQ tokenizer on the rendered frames, then a small autoregressive transformer on interleaved image/action tokens for a single identity. Iterate visually until short rollouts are convincing.",
+    "Set up the evaluation harness before scaling: FVD and PSNR/LPIPS for image fidelity, ArcFace cosine similarity vs. time for identity drift, and an inverse-dynamics model to measure action-following accuracy (\u00e0 la MineWorld [MineWorld]).",
+    "Ablate the spatial latent memory: with vs. without FLAME-shape conditioning, with vs. without an episodic frame bank; quantify long-rollout consistency.",
+    "Scale: add MaskGIT decoding for real-time inference, then push along whichever axis the budget allows \u2014 higher resolution, more identities, or an out-of-distribution test on Unreal Engine MetaHumans."
+  ],
+  "prerequisites": [
+    { "label": "I2DL", "href": "https://www.niessnerlab.org/teaching.html" }
+  ],
+  "references": [
+    { "label": "Genie 3", "href": "https://deepmind.google/models/genie/" },
+    { "label": "WHAM", "href": "https://www.nature.com/articles/s41586-025-08600-3" },
+    { "label": "WHAMM", "href": "https://www.microsoft.com/en-us/research/articles/whamm-real-time-world-modelling-of-interactive-environments/" },
+    { "label": "MineWorld", "href": "https://arxiv.org/abs/2504.08388" },
+    { "label": "DIAMOND", "href": "https://arxiv.org/abs/2405.12399" },
+    { "label": "NeRSemble", "href": "https://tobias-kirschstein.github.io/nersemble/" },
+    { "label": "GaussianHeadAvatar", "href": "https://yuelangx.github.io/gaussianheadavatar/" },
+    { "label": "GaussianAvatars", "href": "https://github.com/ShenhanQian/GaussianAvatars" },
+    { "label": "FSQ", "href": "https://arxiv.org/abs/2309.15505" },
+    { "label": "MaskGIT", "href": "https://arxiv.org/abs/2202.04200" },
+    { "label": "SpatialMemory", "href": "https://arxiv.org/abs/2506.05284" }
+  ],
+  "tags": ["Human Head Avatars", "World Models", "Interactive Video", "Video Generation"],
+  "type": ["Master Thesis", "Guided Research", "IDP"],
+  "state": "open"
+}
