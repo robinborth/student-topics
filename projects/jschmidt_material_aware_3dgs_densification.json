@@ -1,0 +1,30 @@
+{
+  "title": "Inverse-Rendering-Aware Adaptive Density Control for Relightable 3D Gaussian Splatting",
+  "supervisor": {
+    "name": "Jonathan Schmidt",
+    "href": "https://www.niessnerlab.org/members/jonathan_schmidt/profile.html"
+  },
+  "email": "jonathan.schmidt@tum.de",
+  "teaser": "Every relightable 3DGS paper observes that vanilla densification spawns Gaussians wherever the rendered RGB residual is high — including residuals caused by shadows, specularities, or material misestimation — leading to \"loose geometry\" that absorbs shading. Yet none of them changes the densification rule itself: they all keep the original RGB-residual splitter and add normal regularization on top. This project asks whether replacing the densification criterion with an inverse-rendering-aware residual — that distinguishes geometry error from material/lighting error — yields cleaner decompositions and better relighting at no inference cost.",
+  "abstract": "3D Gaussian Splatting's adaptive density control is a heuristic developed for forward novel-view synthesis: it splits or clones Gaussians wherever the photometric residual is large. In an inverse-rendering setting, this heuristic is actively harmful — high residual can mean missing geometric detail, but it can equally mean a baked-in shadow, a poorly explained specular highlight, or a wrong albedo, and densifying in those cases creates Gaussians that absorb shading into geometry. Recent 3DGS densification work (Bulò et al. \"Revising Densification\", ResGS, opacity-gradient ADC, GeoGaussian) operates entirely in RGB space and ignores this distinction, while every relightable 3DGS pipeline (GS-IR, R3DG, GUS-IR, GeoSplatting, GS-ID) keeps vanilla densification and adds normal regularization to compensate. We propose a decomposition-aware densification rule: at each densification step, the photometric residual is routed through the current PBR estimate plus pretrained 2D priors (normal, intrinsic) to produce a geometry-only residual map, and Gaussians are split only where this geometry residual dominates. The contribution is a drop-in replacement for ADC that improves material decomposition and relighting on FIPT and TensoIR-Synthetic across at least two different relightable 3DGS backbones.",
+  "milestones": [
+    "Reproduce two relightable 3DGS backbones with vanilla densification and diagnose where Gaussians get spawned to explain shadows or specularities.",
+    "Decompose the photometric residual into geometry-, material-, and lighting-attributable components using cached 2D priors and the current PBR estimate.",
+    "Replace the ADC criterion with a geometry-residual-driven rule and ablate against vanilla and pixel-error-driven densification.",
+    "Benchmark relighting fidelity, material-decomposition error, and total Gaussian count across two backbones on FIPT and TensoIR-Synthetic."
+  ],
+  "prerequisites": [
+    { "label": "Introduction to Deep Learning (I2DL)", "href": "https://niessner.github.io/I2DL/" },
+    { "label": "Advanced Deep Learning for Computer Vision: Visual Computing (ADL4CV)", "href": "https://niessner.github.io/ADL4CV/" }  ],
+  "references": [
+    { "label": "3D Gaussian Splatting for Real-Time Radiance Field Rendering", "href": "https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/" },
+    { "label": "Revising Densification in Gaussian Splatting", "href": "https://arxiv.org/abs/2404.06109" },
+    { "label": "GS-IR: 3D Gaussian Splatting for Inverse Rendering", "href": "https://lzhnb.github.io/project-pages/gs-ir.html" },
+    { "label": "GUS-IR: Gaussian Splatting With Unified Shading for Inverse Rendering", "href": "https://arxiv.org/abs/2411.07478" },
+    { "label": "Intrinsic Image Diffusion for Indoor Single-view Material Estimation", "href": "https://peter-kocsis.github.io/IntrinsicImageDiffusion/" },
+    { "label": "FIPT: Factorized Inverse Path Tracing", "href": "https://jerrypiglet.github.io/fipt-ucsd/" }
+  ],
+  "tags": ["3D Gaussian Splatting", "Inverse Rendering", "Adaptive Density Control"],
+  "type": ["IDP", "Guided Research", "Master Thesis"],
+  "state": "open"
+}
